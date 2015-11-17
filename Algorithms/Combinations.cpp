@@ -23,12 +23,3 @@ void Combinations::combinations(string x, int size) {
         }
 }
 
-//int main(int argc, const char * argv[]) {
-//    // insert code here...
-//    string x = "ABCD";
-//    Combinations c;
-//    
-//    c.combinations(x, 4);
-//    
-//    return 0;
-//}
