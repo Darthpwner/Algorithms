@@ -14,11 +14,17 @@
 using namespace std;
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    string x = "ABCD";
+    string x[5] = {"hi"};
+    
+    for(int i = 0; i < 5; i++) {
+        cout << x[i] << endl;
+    }
+    
+//    // insert code here...
+//    string x = "ABCD";
     Combinations c;
-    
-    c.combinations(x, 4);
-    
+//    
+//    c.combinations(x, 4);
+//    
     return 0;
 }
