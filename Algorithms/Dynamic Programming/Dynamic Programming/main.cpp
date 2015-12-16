@@ -20,7 +20,22 @@ int nthStaircase(int n) {
     } else if(n == 3) {
         return 4;   //1 + 1 + 1; 1 + 2; 2 + 1; 3
     }
-    return (n - 1) + (n - 2) + (n - 3);
+    
+    return nthStaircase(n - 1) + nthStaircase(n - 2) + nthStaircase(n - 3);
+}
+
+int nthStaircaseWithDP(int n, int map[]) {
+    if(n <= 0) {
+        return 0;
+    } else if(n == 1) {
+        return 1;   //1
+    } else if(map[n] > -1) {
+        return map[n];
+    } else {
+        //map[n] = nth
+    }
+    
+    return -9;
 }
 
 void printNthStaircase(int n) {
@@ -29,6 +44,6 @@ void printNthStaircase(int n) {
 
 int main(int argc, const char * argv[]) {
     // insert code here...
-    printNthStaircase(5);
+    printNthStaircase(4);
     return 0;
 }
