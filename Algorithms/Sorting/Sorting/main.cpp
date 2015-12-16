@@ -94,9 +94,9 @@ int* heapSort(int arr[], int size) {
 
 //
 /* Helper function for finding the max of two numbers */
-int max(int x, int y)
+int min(int x, int y)
 {
-    if(x > y)
+    if(x < y)
     {
         return x;
     }
@@ -135,7 +135,7 @@ void merge_helper(int *input, int left, int right, int *scratch)
              * so, we compare them.  Otherwise, we know that the merge must
              * use take the element from the left array */
             if(l < left + midpoint_distance &&
-               (r == right || max(input[l], input[r]) == input[l]))
+               (r == right || min(input[l], input[r]) == input[l]))
             {
                 scratch[i] = input[l];
                 l++;
