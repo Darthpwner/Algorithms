@@ -170,50 +170,36 @@ int* mergeSort(int arr[], int size) {
 }
 //
 
-int* quickSort(int arr[], int size) {
+int* quickSort(int arr[], int left, int right) {
+    runs++;
+    int i = left, j = right;
+    int tmp;
+    int pivot = arr[(left + right) / 2];
+    
+    /* partition */
+    while (i <= j) {
+        runs++;
+        while (arr[i] < pivot)
+            i++;
+        while (arr[j] > pivot)
+            j--;
+        if (i <= j) {
+            tmp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = tmp;
+            i++;
+            j--;
+        }
+    };
+    
+    /* recursion */
+    if (left < j)
+        quickSort(arr, left, j);
+    if (i < right)
+        quickSort(arr, i, right);
+    
     return arr;
 }
-
-//
-int split(string a[], int n, string splitter)
-{
-    if (n < 0)
-        return -1;
-    
-    // It will always be the case that just before evaluating the loop
-    // condition:
-    //  firstNotLess <= firstUnknown and firstUnknown <= firstGreater
-    //  Every element earlier than position firstNotLess is < splitter
-    //  Every element from position firstNotLess to firstUnknown-1 is
-    //    == splitter
-    //  Every element from position firstUnknown to firstGreater-1 is
-    //     not known yet
-    //  Every element at position firstGreater or later is > splitter
-    
-    int firstNotLess = 0;
-    int firstUnknown = 0;
-    int firstGreater = n;
-    
-    while (firstUnknown < firstGreater)
-    {
-        if (a[firstUnknown] > splitter)
-        {
-            firstGreater--;
-            swap(a[firstUnknown], a[firstGreater]);
-        }
-        else
-        {
-            if (a[firstUnknown] < splitter)
-            {
-                swap(a[firstNotLess], a[firstUnknown]);
-                firstNotLess++;
-            }
-            firstUnknown++;
-        }
-    }
-    return firstNotLess;
-}
-//
 
 void print(int arr[], int size) {
     for(int i = 0; i < size; i++) {
@@ -242,9 +228,10 @@ int main(int argc, const char * argv[]) {
     print(heapSort(arr4, 5), 5);
     
     int arr5[6] = {9, 3, 5, 1, 32, 5};
-    mergeSort(arr5, 6); //Review this algorithm
-    
-    print(arr5, 6);
+    print(mergeSort(arr5, 6), 6);     //Review this algorithm
+
+    int arr6[6] = {12, 1, 92, 3, 4, 6};
+    print(quickSort(arr6, 0, 6), 6);    //Review this algorithm
     
     return 0;
 }
