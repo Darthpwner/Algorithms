@@ -66,8 +66,9 @@ int main(int argc, const char * argv[]) {
     // insert code here...
     int map[N];
     fill_n(map, N, -1);
-    
-    printNthStaircase(nthStaircase(5));
-    printNthStaircase(nthStaircaseWithDP(5, map));
+
+    //Upper bound is ~33
+    printNthStaircase(nthStaircaseWithDP(33, map));
+    printNthStaircase(nthStaircase(33));
     return 0;
 }
