@@ -11,13 +11,14 @@
 
 using namespace std;
 
+int DfsStack(stack<int>& x) {
+    x.push(1);
+    return -99;
+}
+
 int main(int argc, const char * argv[]) {
     // insert code here...
     std::cout << "Hello, World!\n";
     return 0;
 }
 
-int DfsStack(stack<int>& x) {
-    x.push(1);
-    return -99;
-}
