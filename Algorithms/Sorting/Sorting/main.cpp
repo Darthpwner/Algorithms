@@ -134,7 +134,7 @@ void merge_helper(int *input, int left, int right, int *scratch)
             /* Check to see if any elements remain in the left array; if so,
              * we check if there are any elements left in the right array; if
              * so, we compare them.  Otherwise, we know that the merge must
-             * use take the element from the left array */
+             * take the element from the left array */
             if(l < left + midpoint_distance &&
                (r == right || min(input[l], input[r]) == input[l]))
             {
@@ -173,6 +173,47 @@ int* mergeSort(int arr[], int size) {
 int* quickSort(int arr[], int size) {
     return arr;
 }
+
+//
+int split(string a[], int n, string splitter)
+{
+    if (n < 0)
+        return -1;
+    
+    // It will always be the case that just before evaluating the loop
+    // condition:
+    //  firstNotLess <= firstUnknown and firstUnknown <= firstGreater
+    //  Every element earlier than position firstNotLess is < splitter
+    //  Every element from position firstNotLess to firstUnknown-1 is
+    //    == splitter
+    //  Every element from position firstUnknown to firstGreater-1 is
+    //     not known yet
+    //  Every element at position firstGreater or later is > splitter
+    
+    int firstNotLess = 0;
+    int firstUnknown = 0;
+    int firstGreater = n;
+    
+    while (firstUnknown < firstGreater)
+    {
+        if (a[firstUnknown] > splitter)
+        {
+            firstGreater--;
+            swap(a[firstUnknown], a[firstGreater]);
+        }
+        else
+        {
+            if (a[firstUnknown] < splitter)
+            {
+                swap(a[firstNotLess], a[firstUnknown]);
+                firstNotLess++;
+            }
+            firstUnknown++;
+        }
+    }
+    return firstNotLess;
+}
+//
 
 void print(int arr[], int size) {
     for(int i = 0; i < size; i++) {
