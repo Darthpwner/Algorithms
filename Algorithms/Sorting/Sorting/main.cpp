@@ -130,6 +130,7 @@ void merge_helper(int *input, int left, int right, int *scratch)
         /* merge the arrays together using scratch for temporary storage */
         for(i = 0; i < length; i++)
         {
+            runs++;
             /* Check to see if any elements remain in the left array; if so,
              * we check if there are any elements left in the right array; if
              * so, we compare them.  Otherwise, we know that the merge must
@@ -149,6 +150,7 @@ void merge_helper(int *input, int left, int right, int *scratch)
         /* Copy the sorted subarray back to the input */
         for(i = left; i < right; i++)
         {
+            runs++;
             input[i] = scratch[i - left];
         }
     }
@@ -159,26 +161,14 @@ void merge_helper(int *input, int left, int right, int *scratch)
  * be thrown.  If we don't allocate a scratch array here, what happens?
  *
  * Elements are sorted in reverse order -- greatest to least */
-
-int mergesort(int *input, int size)
-{
+int* mergeSort(int arr[], int size) {
     int *scratch = (int *)malloc(size * sizeof(int));
-    if(scratch != NULL)
-    {
-        merge_helper(input, 0, size, scratch);
-        free(scratch);
-        return 1;
-    }
-    else
-    {
-        return 0;
-    }
+    merge_helper(arr, 0, size, scratch);
+    free(scratch);
+    
+    return arr;
 }
 //
-
-//int* mergeSort(int arr[], int size) {
-//    return arr;
-//}
 
 int* quickSort(int arr[], int size) {
     return arr;
@@ -211,7 +201,7 @@ int main(int argc, const char * argv[]) {
     print(heapSort(arr4, 5), 5);
     
     int arr5[6] = {9, 3, 5, 1, 32, 5};
-    mergesort(arr5, 6);
+    mergeSort(arr5, 6); //Review this algorithm
     
     print(arr5, 6);
     
