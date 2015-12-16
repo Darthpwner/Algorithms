@@ -13,6 +13,15 @@ using namespace std;
 
 int runs = 0;
 
+/*Utils*/
+int findFactorial(int n) {
+    if (n == 0)
+        return 1;
+    else
+        return (n * findFactorial(n-1));
+}
+/**/
+
 //9.1
 int nthStaircase(int n) {
     //My solution: Do not use for cases where you can take many steps i.e. 4 or more because it's hardcoded
@@ -56,19 +65,38 @@ int nthStaircaseWithDP(int n, int map[]) {
     }
 }
 
-void printNthStaircase(int n) {
+void print(int n) {
     cout << n << endl;
-    cout << "Runs: " << runs << endl;
+    cout << "Runs: " << runs << endl << endl;
     runs = 0;
 }
 
+//9.2
+int robotOnGridProblem(int grid[][N], int x, int y) {
+    runs++;
+    if(x > N || y > N) {
+        return -1;
+    }
+    
+    return (findFactorial(x + y)) / (findFactorial(x) * findFactorial(y));
+}
+
 int main(int argc, const char * argv[]) {
-    // insert code here...
+    //9.1: Upper bound is ~33
     int map[N];
     fill_n(map, N, -1);
 
-    //Upper bound is ~33
-    printNthStaircase(nthStaircaseWithDP(33, map));
-    printNthStaircase(nthStaircase(33));
+    print(nthStaircaseWithDP(33, map));
+    print(nthStaircase(33));
+    
+    //9.2
+    int grid[N][N];
+    for(int i = 0; i < N; i++) {
+        for(int j = 0; j < N; j++) {
+            grid[i][j] = 0;
+        }
+    }
+
+    print(robotOnGridProblem(grid, 1, 1));
     return 0;
 }
