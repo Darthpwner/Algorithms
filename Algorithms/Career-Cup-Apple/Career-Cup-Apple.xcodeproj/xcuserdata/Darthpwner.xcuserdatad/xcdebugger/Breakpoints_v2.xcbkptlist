@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Career-Cup-Apple/main.cpp"
-            timestampString = "471984284.052343"
+            timestampString = "471994106.992651"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
             landmarkName = "main(int argc, const char * argv[])"
             landmarkType = "7">
          </BreakpointContent>
@@ -32,6 +32,22 @@
             startingLineNumber = "23"
             endingLineNumber = "23"
             landmarkName = "sum(int a, int b)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Career-Cup-Apple/main.cpp"
+            timestampString = "471994097.372556"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "square(int num)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

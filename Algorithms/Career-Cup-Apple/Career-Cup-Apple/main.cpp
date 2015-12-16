@@ -35,6 +35,20 @@ int sum(int a, int b) {
     return a;
 }
 
+//Returns the square without using * or ^
+int square(int num) {
+//    int absNum = abs(num);
+    int absNum = abs(num);
+    int square = 0, odd = 1;
+    while(absNum > 0) {
+        square += odd;
+        odd += 2;
+        absNum--;
+    }
+    
+    return square;
+}
+
 void print(int n) {
     cout << n << endl << endl;
 }
@@ -46,6 +60,8 @@ int main(int argc, const char * argv[]) {
     print(sum(-8, -6));
     print(sum(-8, 6));
     print(sum(-6, 8));
+    
+    print(square(-5));
     
     return 0;
 }
