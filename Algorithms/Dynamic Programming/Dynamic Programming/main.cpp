@@ -100,6 +100,8 @@ int magicIndex(int arr[], int size, int start, int end) {
     }
 }
 
+//TODO: Add function for non-distinct numbers on magic index
+
 int main(int argc, const char * argv[]) {
     //9.1: Upper bound is ~33
     int map[N];
