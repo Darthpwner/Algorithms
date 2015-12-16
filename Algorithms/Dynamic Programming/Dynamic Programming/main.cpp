@@ -9,41 +9,65 @@
 #include <iostream>
 using namespace std;
 
+#define N 1000
+
+int runs = 0;
+
 //9.1
 int nthStaircase(int n) {
-    if(n <= 0) {
+    //My solution: Do not use for cases where you can take many steps i.e. 4 or more because it's hardcoded
+//    if(n <= 0) {
+//        return 0;
+//    } else if(n == 1) {
+//        return 1;   //1
+//    } else if(n == 2) {
+//        return 2;   //1 + 1; 2
+//    } else if(n == 3) {
+//        return 4;   //1 + 1 + 1; 1 + 2; 2 + 1; 3
+//    }
+    
+    runs++;
+    
+    //Official solution
+    if(n < 0) {
         return 0;
-    } else if(n == 1) {
-        return 1;   //1
-    } else if(n == 2) {
-        return 2;   //1 + 1; 2
-    } else if(n == 3) {
-        return 4;   //1 + 1 + 1; 1 + 2; 2 + 1; 3
+    } else if(n == 0) {
+        return 1;
     }
     
     return nthStaircase(n - 1) + nthStaircase(n - 2) + nthStaircase(n - 3);
 }
 
 int nthStaircaseWithDP(int n, int map[]) {
-    if(n <= 0) {
+    runs++;
+    
+    //Official solution
+    if(n < 0) {
         return 0;
-    } else if(n == 1) {
+    } else if(n == 0) {
         return 1;   //1
     } else if(map[n] > -1) {
         return map[n];
     } else {
-        //map[n] = nth
+        map[n] = nthStaircaseWithDP(n - 1, map) +
+                 nthStaircaseWithDP(n - 2, map) +
+                 nthStaircaseWithDP(n - 3, map);
+        return map[n];
     }
-    
-    return -9;
 }
 
 void printNthStaircase(int n) {
-    cout << nthStaircase(n) << endl;
+    cout << n << endl;
+    cout << "Runs: " << runs << endl;
+    runs = 0;
 }
 
 int main(int argc, const char * argv[]) {
     // insert code here...
-    printNthStaircase(4);
+    int map[N];
+    fill_n(map, N, -1);
+    
+    printNthStaircase(nthStaircase(5));
+    printNthStaircase(nthStaircaseWithDP(5, map));
     return 0;
 }
